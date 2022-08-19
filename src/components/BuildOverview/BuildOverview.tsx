@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Build, BuildJSON } from '../../types';
+import AscendancyThumbnail from '../AscendancyThumbnail';
 
 import styles from './BuildOverview.module.scss';
 
@@ -19,9 +20,8 @@ const formatter = Intl.DateTimeFormat('default', {
 const BuildOverview: FC<BuildOverviewProps> = ({ build, addedAt }) => {
   return (
     <span className={styles.root}>
-      <img
-        src={`/assets/images/ascendancies/${build.ascendancy}.png`}
-        alt=""
+      <AscendancyThumbnail
+        ascendancy={build.ascendancy}
         className={styles.ascendancyImage}
       />
       <span className={styles.textContent}>
