@@ -1,0 +1,48 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  background-color: var(--color-bg-lighter);
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1;
+}
+
+.icon {
+  color: var(--color-positive);
+  flex-shrink: 0;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 700;
+  font-size: inherit;
+}
+
+.timestamp {
+  color: var(--color-fg-weaker);
+}
+
+.content {
+  white-space: pre-wrap;
+}
+
+.closeSection {
+  margin-left: auto;
+}
+
+.closeButton {
+  font-size: 22px;
+}

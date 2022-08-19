@@ -1,0 +1,64 @@
+.root {
+  position: fixed;
+  right: 0;
+  width: 400px;
+  background: var(--color-bg-lighter);
+  top: var(--site-heading-height);
+  bottom: 0;
+  box-shadow: var(--shadow-sm-left);
+  transition: transform 250ms ease-in-out;
+  transform: translateX(100%);
+
+  &.isOpen {
+    transform: translateX(0);
+
+    .togglerIcon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.toggler {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateX(-100%);
+  z-index: 2;
+  background-color: inherit;
+  box-shadow: inherit;
+  border-bottom-left-radius: 4px;
+  transition: background-color 150ms;
+
+  &:hover {
+    background-color: var(--color-bg-lightest);
+  }
+}
+
+.togglerIcon {
+  transition: transform 150ms;
+}
+
+.notifications {
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  max-height: 100%;
+  min-height: 0;
+}
+
+.noContent {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 16px;
+  padding: 24px;
+
+  .title {
+    font-size: 20px;
+  }
+}

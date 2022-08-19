@@ -1,0 +1,78 @@
+[
+  {
+    "name": "Ascendant",
+    "className": "Scion"
+  },
+  {
+    "name": "Juggernaut",
+    "className": "Marauder"
+  },
+  {
+    "name": "Berserker",
+    "className": "Marauder"
+  },
+  {
+    "name": "Chieftain",
+    "className": "Marauder"
+  },
+  {
+    "name": "Raider",
+    "className": "Ranger"
+  },
+  {
+    "name": "Deadeye",
+    "className": "Ranger"
+  },
+  {
+    "name": "Pathfinder",
+    "className": "Ranger"
+  },
+  {
+    "name": "Occultist",
+    "className": "Witch"
+  },
+  {
+    "name": "Elementalist",
+    "className": "Witch"
+  },
+  {
+    "name": "Necromancer",
+    "className": "Witch"
+  },
+  {
+    "name": "Slayer",
+    "className": "Duelist"
+  },
+  {
+    "name": "Gladiator",
+    "className": "Duelist"
+  },
+  {
+    "name": "Champion",
+    "className": "Duelist"
+  },
+  {
+    "name": "Inquisitor",
+    "className": "Templar"
+  },
+  {
+    "name": "Hierophant",
+    "className": "Templar"
+  },
+  {
+    "name": "Guardian",
+    "className": "Templar"
+  },
+  {
+    "name": "Assassin",
+    "className": "Shadow"
+  },
+  {
+    "name": "Trickster",
+    "className": "Shadow"
+  },
+  {
+    "name": "Saboteur",
+    "className": "Shadow"
+  }
+]

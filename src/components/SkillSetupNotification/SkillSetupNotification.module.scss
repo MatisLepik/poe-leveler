@@ -1,0 +1,33 @@
+.setup {
+  display: flex;
+  gap: 8px;
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &.isSingle {
+    flex-direction: row;
+    .title {
+      margin-right: 6px;
+    }
+  }
+
+  &:not(.isSingle) {
+    .title {
+      margin: 6px 0;
+    }
+
+    .setup::before {
+      content: '- ';
+    }
+  }
+}
+
+.setups {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}

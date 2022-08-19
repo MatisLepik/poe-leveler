@@ -1,0 +1,17 @@
+.root {
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 28px;
+  height: var(--site-heading-height);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  height: var(--site-heading-height);
+}
+
+.title {
+  font-size: 24px;
+}

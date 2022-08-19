@@ -1,0 +1,53 @@
+.root {
+  width: 200px;
+  max-width: 100%;
+  position: relative;
+
+  :global(.react-autosuggest__suggestions-container) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: var(--color-bg-lighter);
+    box-shadow: var(--shadow-sm-down);
+    min-width: 300px;
+  }
+
+  :global(.react-autosuggest__suggestions-list) {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  :global(.react-autosuggest__suggestion) {
+    padding: 8px 12px;
+    transition: background-color 150ms;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-bg-lightest);
+    }
+  }
+}
+
+.input {
+  outline: none;
+  height: 36px;
+  border: 1px solid var(--color-border);
+  transition: border-color 150ms;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 0 12px;
+  width: 100%;
+
+  &:hover {
+    border-color: var(--color-highlight);
+  }
+
+  &:focus-visible,
+  &:active {
+    border-color: var(--color-highlight-bright);
+  }
+}

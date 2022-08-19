@@ -1,0 +1,61 @@
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.color-R {
+  background: var(--color-negative);
+}
+
+.color-G {
+  background: var(--color-positive);
+}
+
+.color-B {
+  background: var(--color-highlight);
+}
+
+.color-W {
+  background: var(--color-fg);
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &.active .title {
+    font-weight: 700;
+  }
+
+  &.support {
+    font-size: 16px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .extra {
+    font-size: 14px;
+    color: var(--color-fg-weaker);
+  }
+}
+
+.maxLevel {
+  margin-left: 0.25ch;
+  font-size: 16px;
+  color: var(--color-fg-weaker);
+  font-weight: 400;
+
+  &::before {
+    content: '(';
+  }
+  &::after {
+    content: ')';
+  }
+}

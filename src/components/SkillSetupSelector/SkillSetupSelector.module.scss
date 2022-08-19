@@ -1,0 +1,69 @@
+.root {
+  width: 100%;
+}
+
+.setupsLabel {
+  display: flex;
+  font-size: 24px;
+
+  .button {
+    margin-left: 84px;
+    font-size: 18px;
+  }
+}
+
+.setups {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  width: 100%;
+}
+
+.setup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--color-bg-lighter);
+  padding: 16px;
+  border-radius: 4px;
+  width: 680px;
+
+  .gemSelect {
+    width: 376px;
+  }
+
+  .notesInput {
+    flex-grow: 1;
+  }
+}
+
+.levels {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.levelSelect {
+  width: 80px;
+}
+
+.gemRow {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.deleteGemButton {
+  height: 36px;
+  width: 36px;
+  font-size: 24px;
+}
+
+.gemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
