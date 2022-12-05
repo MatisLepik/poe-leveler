@@ -77,6 +77,7 @@ const TasksSelector: FC<TasksSelectorProps> = ({ value, onChange }) => {
     <Label
       as="div"
       className={styles.root}
+      sticky
       name={
         <div className={styles.setupsLabel}>
           <span>Tasks</span>

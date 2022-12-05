@@ -86,6 +86,7 @@ const ItemSetupsSelector: FC<ItemSetupsSelectorProps> = ({
     <Label
       as="div"
       className={styles.root}
+      sticky
       name={
         <div className={styles.setupsLabel}>
           <span>Items</span>
@@ -142,6 +143,7 @@ const ItemSetupsSelector: FC<ItemSetupsSelectorProps> = ({
                 value={setup.name || ''}
                 onChange={(event) => change(setup, 'name', event.target.value)}
                 className={styles.textInput}
+                autoFocus
               />
             </Label>
             <Label name="Notes (optional)">

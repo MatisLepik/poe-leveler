@@ -1,6 +1,14 @@
 .name {
   font-size: 18px;
-  margin-bottom: 8px;
+  padding: 8px 0;
+
+  &.sticky {
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+
+    background-color: var(--color-bg);
+  }
 }
 
 .root {

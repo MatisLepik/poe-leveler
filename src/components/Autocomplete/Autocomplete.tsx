@@ -16,6 +16,7 @@ type AutocompleteProps = {
   className?: string;
   placeholder?: string;
   dontSuggest?: string[];
+  autoFocus?: boolean;
 };
 
 const renderSuggestion = (suggestion: Option) => <div>{suggestion.label}</div>;
@@ -28,6 +29,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
   className,
   placeholder,
   dontSuggest,
+  autoFocus = false,
 }) => {
   const [localValue, setLocalValue] = useState('');
   const [suggestions, setSuggestions] = useState<Option[]>([]);
@@ -92,6 +94,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
         onChange: handleChange,
         onBlur: handleBlur,
         className: styles.input,
+        autoFocus,
       }}
     />
   );

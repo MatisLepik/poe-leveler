@@ -144,6 +144,7 @@ const SkillSetupSelector: FC<SkillSetupSelectorProps> = ({
     <Label
       as="div"
       className={styles.root}
+      sticky
       name={
         <div className={styles.setupsLabel}>
           <span>Skills</span>
@@ -166,6 +167,7 @@ const SkillSetupSelector: FC<SkillSetupSelectorProps> = ({
                   placeholder="From"
                   required
                   min="0"
+                  autoFocus
                   onChange={(event) => handleLevelChange(setup, event)}
                 />
                 <Input
@@ -189,6 +191,7 @@ const SkillSetupSelector: FC<SkillSetupSelectorProps> = ({
                     value={gem.name}
                     onChange={(value) => handleGemChange(setup, gem, value)}
                     className={styles.gemSelect}
+                    autoFocus
                     placeholder="Type a gem name"
                     dontSuggest={setup.links.map((gem) => gem.name)}
                   />

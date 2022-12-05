@@ -9,6 +9,7 @@ type LabelProps = {
   as?: 'div' | 'label';
   className?: string;
   inputWrapperClassName?: string;
+  sticky?: boolean;
 };
 
 const Label: FC<LabelProps> = ({
@@ -17,10 +18,11 @@ const Label: FC<LabelProps> = ({
   className,
   inputWrapperClassName,
   as: As = 'label',
+  sticky,
 }) => {
   return (
     <As className={cn(styles.root, className)}>
-      <div className={styles.name}>{name}</div>
+      <div className={cn(styles.name, { [styles.sticky]: sticky })}>{name}</div>
       <div className={cn(styles.inputWrapper, inputWrapperClassName)}>
         {children}
       </div>
