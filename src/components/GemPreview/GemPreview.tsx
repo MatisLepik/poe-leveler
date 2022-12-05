@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 import { Gem } from '../../types';
 
 import styles from './GemPreview.module.scss';
@@ -6,18 +8,24 @@ type SkillPreviewProps = {
   gem: Gem;
   variant?: 'regular' | 'minimal';
   className?: string;
+  isDisabled?: boolean;
 };
 
 export default function GemPreview({
   gem,
   variant = 'regular',
+  isDisabled,
   className,
 }: SkillPreviewProps) {
   return (
     <div
-      className={`${styles.root} ${className || ''} ${
-        styles[gem.isSupport ? 'support' : 'active']
-      } ${styles[variant]}`}
+      className={cn(
+        styles.root,
+        className,
+        styles[gem.isSupport ? 'support' : 'active'],
+        styles[variant],
+        { [styles.disabled]: isDisabled }
+      )}
     >
       <div className={`${styles.dot} ${styles[`color-${gem.color}`]}`} />
       <div className={styles.content}>

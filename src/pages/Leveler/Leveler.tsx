@@ -187,6 +187,7 @@ const Leveler: FC = () => {
                   key={setup.id}
                   skillSetup={setup}
                   className={styles.skillSetup}
+                  level={level}
                 />
               ))}
             </div>

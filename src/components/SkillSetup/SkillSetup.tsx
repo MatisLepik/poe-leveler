@@ -6,13 +6,18 @@ import GemPreview from '../GemPreview';
 type SkillSetupProps = {
   skillSetup: SkillSetupType;
   className?: string;
+  level: number;
 };
 
-export default function SkillSetup({ skillSetup, className }: SkillSetupProps) {
+export default function SkillSetup({
+  skillSetup,
+  className,
+  level,
+}: SkillSetupProps) {
   return (
     <div className={`${styles.root} ${className || ''}`}>
       {skillSetup.links.map((gem, index) => (
-        <GemPreview gem={gem} key={index} />
+        <GemPreview gem={gem} key={index} isDisabled={level < gem.reqLvl} />
       ))}
     </div>
   );
