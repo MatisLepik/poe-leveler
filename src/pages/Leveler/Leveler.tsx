@@ -23,6 +23,7 @@ import ContentWrapper from '../../components/ContentWrapper';
 import { useNavigate, useParams } from 'react-router';
 import useBuildSaves from '../../hooks/useBuildSaves';
 import { getBuild } from '../../build';
+import GemPreview from '../../components/GemPreview';
 
 const getSkillSetups = (build: Build, level: number) => {
   return orderBy(
@@ -115,6 +116,11 @@ const Leveler: FC = () => {
       (setup) => setup.to === level - 1
     );
 
+    const newSupportSkills = currentSkillSetups
+      .filter((setup) => setup.from !== level)
+      .flatMap((setup) => setup.links)
+      .filter((gem) => gem.reqLvl === level);
+
     const newTasks = build.tasks.filter((task) => task.from === level);
 
     if (newSkillSetups.length > 0) {
@@ -135,6 +141,22 @@ const Leveler: FC = () => {
         `New ${newItemSetups.length > 1 ? 'items' : 'item'} unlocked`,
         newItemSetups.map((setup) => setup.name).join('; '),
         Sword
+      );
+    }
+
+    if (newSupportSkills.length > 0) {
+      addNotification(
+        `New ${
+          newSupportSkills.length === 1 ? 'support' : 'supports'
+        } equippable`,
+        <div className={styles.skillSetupNotificationContent}>
+          <ul className={styles.resetList}>
+            {newSupportSkills.map((gem) => (
+              <GemPreview key={gem.name} gem={gem} variant="minimal" />
+            ))}
+          </ul>
+        </div>,
+        Celebration
       );
     }
 
