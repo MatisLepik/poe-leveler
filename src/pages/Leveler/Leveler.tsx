@@ -98,7 +98,7 @@ const Leveler: FC = () => {
     }
   });
 
-  const hasItems = true;
+  const hasItemSetups = build.itemSetups.length > 0;
 
   return (
     <PageRoot className={styles.root} noPadding>
@@ -127,7 +127,7 @@ const Leveler: FC = () => {
             </div>
           </div>
         </div>
-        {hasItems && (
+        {hasItemSetups && (
           <div className={styles.section}>
             <header className={styles.sectionHeader}>
               <h2 className={styles.sectionTitle}>Current items</h2>
