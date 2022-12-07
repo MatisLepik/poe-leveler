@@ -1,0 +1,16 @@
+.root {
+  list-style-type: none;
+  padding: 8px;
+  margin: 0;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.finished {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

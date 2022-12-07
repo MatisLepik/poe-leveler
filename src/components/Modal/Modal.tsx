@@ -30,7 +30,7 @@ const Modal: FC<ModalProps> = ({ title, dismiss, children, ...props }) => {
             &times;
           </Button>
         </header>
-        <div>{children}</div>
+        {children}
       </div>
     </div>
   );

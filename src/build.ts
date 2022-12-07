@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 import {
-  Ascendancy,
   Build,
   Gem,
   GemJSON,
@@ -10,7 +9,7 @@ import {
   Task,
 } from './types';
 import gems from './data/generated/gems.json';
-import { sortBy } from 'lodash';
+import sortBy from 'lodash/sortBy';
 
 const invalidCodeError = 'Invalid build code';
 

@@ -1,6 +1,5 @@
 import cn from 'classnames';
-import { orderBy } from 'lodash';
-import { FC, useMemo } from 'react';
+import { FC, useMemo, useState } from 'react';
 import useEventListener from '@use-it/event-listener';
 
 import type { Build } from '../../types';
@@ -18,32 +17,17 @@ import { useNavigate, useParams } from 'react-router';
 import useBuildSaves from '../../hooks/useBuildSaves';
 import { getBuild } from '../../build';
 import { useBuildNotifications } from './Leveler.utils';
+import Modal from '../../components/Modal';
+import NextUpgrades from '../../components/NextUpgrades';
+import { getItemSetups, getSkillSetups } from '../../utils/setups';
 
 import styles from './Leveler.module.scss';
-
-const getSkillSetups = (build: Build, level: number) => {
-  return orderBy(
-    build.skillSetups.filter(
-      (setup) => level >= setup.from && level <= setup.to
-    ),
-    [(setup) => setup.from],
-    ['asc']
-  );
-};
-
-const getItemSetups = (build: Build, level: number) => {
-  return orderBy(
-    build.itemSetups.filter(
-      (setup) => level >= setup.from && level <= setup.to
-    ),
-    [(setup) => setup.from, 'desc']
-  );
-};
 
 const Leveler: FC = () => {
   const { buildId } = useParams<{ buildId: string }>();
   const [buildSaves] = useBuildSaves();
   const navigate = useNavigate();
+  const [showUpgradesModal, setUpgradesModal] = useState(false);
 
   const build = useMemo(() => {
     const buildJSON = buildSaves.find((save) => save.build.id === buildId);
@@ -88,6 +72,10 @@ const Leveler: FC = () => {
 
   const reset = () => {
     setLevel(1);
+  };
+
+  const toggleUpgradesModal = () => {
+    setUpgradesModal((prev) => !prev);
   };
 
   useEventListener('keydown', (evt: KeyboardEvent) => {
@@ -176,9 +164,18 @@ const Leveler: FC = () => {
               <small>(click to level)</small>
             </Button>
           </div>
-          <div className={styles.right} />
+          <div className={styles.right}>
+            <Button variant="secondary" onClick={toggleUpgradesModal}>
+              Next upgrades
+            </Button>
+          </div>
         </ContentWrapper>
       </footer>
+      {showUpgradesModal && (
+        <Modal title="Next upgrades" dismiss={() => setUpgradesModal(false)}>
+          <NextUpgrades build={build} level={level} />
+        </Modal>
+      )}
     </PageRoot>
   );
 };
