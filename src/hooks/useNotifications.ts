@@ -10,6 +10,7 @@ const useNotifications = (): [
     logo: Notification['logo']
   ) => void,
   removeNotification: (id: string) => void,
+  clearNotifications: () => void,
   isNotificationDrawerOpen: boolean,
   setNotificationDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>
 ] => {
@@ -49,10 +50,15 @@ const useNotifications = (): [
     });
   }, []);
 
+  const clearNotifications = useCallback(() => {
+    setNotifications([]);
+  }, []);
+
   return [
     notifications,
     addNotification,
     removeNotification,
+    clearNotifications,
     isNotificationDrawerOpen,
     setNotificationDrawerOpen,
   ];

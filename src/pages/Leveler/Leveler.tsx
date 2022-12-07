@@ -68,6 +68,7 @@ const Leveler: FC = () => {
     notifications,
     ,
     removeNotification,
+    clearNotifications,
     isNotificationDrawerOpen,
     setNotificationDrawerOpen,
   ] = useBuildNotifications(
@@ -148,6 +149,7 @@ const Leveler: FC = () => {
       <Notifications
         notifications={notifications}
         removeNotification={removeNotification}
+        clearNotifications={clearNotifications}
         isOpen={isNotificationDrawerOpen}
         toggle={() => setNotificationDrawerOpen((prev) => !prev)}
       />

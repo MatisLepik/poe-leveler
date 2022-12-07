@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "generate:data": "node ./scripts/generateData.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@use-it/event-listener": "^0.1.7",

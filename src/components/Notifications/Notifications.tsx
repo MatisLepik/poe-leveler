@@ -2,14 +2,16 @@ import cn from 'classnames';
 
 import type { Notification as NotificationType } from '../../types';
 import Notification from '../Notification';
-import UnstyledButton from '../UnstyledButton';
 
 import styles from './Notifications.module.scss';
 import ChevronLeft from '../icons/ChevronLeft';
+import NotificationAction from './NotificationAction';
+import Clear from '../icons/Clear';
 
 type NotificationsProps = {
   notifications: NotificationType[];
   removeNotification: (id: string) => void;
+  clearNotifications: () => void;
   isOpen: boolean;
   toggle: () => void;
 };
@@ -17,6 +19,7 @@ type NotificationsProps = {
 export default function Notifications({
   notifications,
   removeNotification,
+  clearNotifications,
   isOpen,
   toggle,
 }: NotificationsProps) {
@@ -24,13 +27,21 @@ export default function Notifications({
 
   return (
     <div className={cn(styles.root, { [styles.isOpen]: isOpen })}>
-      <UnstyledButton
-        aria-label="Toggle drawer"
-        className={styles.toggler}
-        onClick={toggle}
-      >
-        <ChevronLeft className={styles.togglerIcon} />
-      </UnstyledButton>
+      <div className={styles.actions}>
+        <NotificationAction
+          label="Toggle drawer"
+          className={styles.toggler}
+          onClick={toggle}
+        >
+          <ChevronLeft className={styles.togglerIcon} />
+        </NotificationAction>
+        <NotificationAction
+          label="Clear notifications"
+          onClick={clearNotifications}
+        >
+          <Clear />
+        </NotificationAction>
+      </div>
       <ol className={styles.notifications}>
         {notifications.map((notification) => (
           <Notification

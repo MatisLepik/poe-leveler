@@ -5,6 +5,7 @@
   box-shadow: var(--shadow-sm-left);
   transition: transform 250ms ease-in-out;
   z-index: 2;
+  position: relative;
 
   @media (min-width: variables.$bpVerticalNotifications) {
     transform: translateX(100%);
@@ -14,10 +15,11 @@
     top: var(--site-heading-height);
     bottom: 0;
 
-    .toggler {
+    .actions {
       left: 0;
       top: 0;
       transform: translateX(-100%);
+      flex-direction: column;
     }
 
     &.isOpen {
@@ -38,25 +40,21 @@
     .toggler {
       display: none;
     }
+
+    .actions {
+      flex-direction: row;
+      top: 0;
+      right: 0;
+      transform: translateY(-100%);
+    }
   }
 }
 
-.toggler {
-  height: 40px;
+.actions {
   width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
-  z-index: 2;
-  background-color: inherit;
-  box-shadow: inherit;
-  border-bottom-left-radius: 4px;
-  transition: background-color 150ms;
-
-  &:hover {
-    background-color: var(--color-bg-lightest);
-  }
+  display: flex;
+  gap: 8px;
 }
 
 .togglerIcon {
