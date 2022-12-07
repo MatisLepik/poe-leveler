@@ -2,7 +2,7 @@ import { FC } from 'react';
 import GemPreview from '../../GemPreview';
 import ItemSetup from '../../ItemSetup';
 import SkillSetup from '../../SkillSetup';
-import { Breakpoint, Upgrade, UpgradeType } from '../NextUpgrades';
+import { Breakpoint, Upgrade, UpgradeType } from '../NextUpgrades.utils';
 
 import styles from './LevelBreakpoint.module.scss';
 
@@ -15,7 +15,11 @@ const renderUpgrade = (upgrade: Upgrade) => {
     case UpgradeType.Gem:
       return (
         <>
-          <h3 className={styles.upgradeTitle}>New support</h3>
+          <h3 className={styles.upgradeTitle}>
+            New support for{' '}
+            {upgrade.setup.links.find((link) => !link.isSupport)?.name ||
+              'unknown active setup'}
+          </h3>
           <GemPreview gem={upgrade.gem} />
         </>
       );
