@@ -10,6 +10,7 @@ import jsonpack from 'jsonpack';
 
 import styles from './BuildList.module.scss';
 import CopyButton from '../../../components/CopyButton';
+import OpenBuildButton from '../../../components/OpenBuildButton';
 
 const BuildList: FC = () => {
   const navigate = useNavigate();
@@ -41,9 +42,7 @@ const BuildList: FC = () => {
                     Edit
                   </Button>
                   <CopyButton getText={() => jsonpack.pack(save.build)} />
-                  <Button onClick={() => navigate(`/builds/${save.build.id}`)}>
-                    Start!
-                  </Button>
+                  <OpenBuildButton buildId={save.build.id} />
                 </div>
               </li>
             ))}

@@ -152,7 +152,10 @@
   flex-direction: column;
   align-items: center;
   line-height: 12px;
-  min-width: 250px;
+
+  @media (min-width: 800px) {
+    min-width: 250px;
+  }
 
   small {
     font-size: 14px;
