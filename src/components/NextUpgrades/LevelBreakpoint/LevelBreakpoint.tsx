@@ -44,9 +44,6 @@ const LevelBreakpoint: FC<LevelBreakpointProps> = ({ breakpoint }) => {
         {breakpoint.upgrades.map((upgrade, index) => (
           <div key={index}>{renderUpgrade(upgrade)}</div>
         ))}
-        {breakpoint.upgrades.map((upgrade, index) => (
-          <div key={index}>{renderUpgrade(upgrade)}</div>
-        ))}
       </div>
     </li>
   );
