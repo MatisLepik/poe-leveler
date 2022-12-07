@@ -10,10 +10,6 @@
   text-decoration: none;
   font-size: 16px;
 
-  &:not([aria-disabled='true']):focus-visible {
-    background-color: var(--color-highlight);
-  }
-
   &[aria-disabled='true'] {
     cursor: default;
     opacity: 0.5;
@@ -70,5 +66,13 @@
 
   &:hover {
     box-shadow: var(--shadow-sm-down);
+  }
+
+  &:not([aria-disabled='true']) {
+    &:hover,
+    &:focus-visible {
+      outline: none;
+      background-color: var(--color-bg-lighter);
+    }
   }
 }
