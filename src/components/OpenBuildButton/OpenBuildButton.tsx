@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router';
 import useLocalStorageState from 'use-local-storage-state';
-import { Build } from '../../types';
 import Button from '../Button';
 
 import styles from './OpenBuildButton.module.scss';

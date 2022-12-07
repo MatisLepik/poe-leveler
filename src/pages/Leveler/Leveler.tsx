@@ -2,7 +2,6 @@ import cn from 'classnames';
 import { FC, useMemo, useState } from 'react';
 import useEventListener from '@use-it/event-listener';
 
-import type { Build } from '../../types';
 import Button from '../../components/Button';
 import SkillSetup from '../../components/SkillSetup';
 import ItemSetup from '../../components/ItemSetup';
