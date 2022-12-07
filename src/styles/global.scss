@@ -23,6 +23,12 @@
   --shadow-sm-down: 0px 2px 2px 0px rgb(0 0 0 / 30%);
   --shadow-sm-left: -2px 0px 2px 0px rgb(0 0 0 / 30%);
   --site-heading-height: 90px;
+  --footer-height: 100px;
+  --site-side-padding: 12px;
+
+  @media (min-width: 768px) {
+    --site-side-padding: 24px;
+  }
 }
 
 /**

@@ -1,19 +1,42 @@
+@use '../../styles/variables';
+
 .root {
-  position: fixed;
-  right: 0;
-  width: 400px;
   background: var(--color-bg-lighter);
-  top: var(--site-heading-height);
-  bottom: 0;
   box-shadow: var(--shadow-sm-left);
   transition: transform 250ms ease-in-out;
-  transform: translateX(100%);
+  z-index: 2;
 
-  &.isOpen {
-    transform: translateX(0);
+  @media (min-width: variables.$bpVerticalNotifications) {
+    transform: translateX(100%);
+    position: fixed;
+    right: 0;
+    width: 400px;
+    top: var(--site-heading-height);
+    bottom: 0;
 
-    .togglerIcon {
-      transform: rotate(180deg);
+    .toggler {
+      left: 0;
+      top: 0;
+      transform: translateX(-100%);
+    }
+
+    &.isOpen {
+      transform: translateX(0);
+
+      .togglerIcon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  @media (max-width: calc(variables.$bpVerticalNotifications - 1px)) {
+    margin-bottom: var(--footer-height);
+    margin-top: auto;
+    margin-left: var(--site-side-padding);
+    margin-right: var(--site-side-padding);
+
+    .toggler {
+      display: none;
     }
   }
 }
@@ -25,9 +48,6 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  left: 0;
-  top: 0;
-  transform: translateX(-100%);
   z-index: 2;
   background-color: inherit;
   box-shadow: inherit;

@@ -3,11 +3,17 @@ import cn from 'classnames';
 
 import styles from './PageRoot.module.scss';
 
-const PageRoot: FC<InputHTMLAttributes<HTMLDivElement>> = ({
-  className,
-  ...props
-}) => {
-  return <div className={cn(styles.root, className)} {...props}></div>;
+type PageRootProps = InputHTMLAttributes<HTMLDivElement> & {
+  noPadding?: boolean;
+};
+
+const PageRoot: FC<PageRootProps> = ({ className, noPadding, ...props }) => {
+  return (
+    <div
+      className={cn(styles.root, className, { [styles.noPadding]: noPadding })}
+      {...props}
+    ></div>
+  );
 };
 
 export default PageRoot;

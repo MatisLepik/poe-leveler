@@ -97,10 +97,10 @@ const Leveler: FC = () => {
     }
   });
 
-  const hasItems = false;
+  const hasItems = true;
 
   return (
-    <PageRoot className={styles.root}>
+    <PageRoot className={styles.root} noPadding>
       <Header title={<BuildOverview build={build} />} className={styles.header}>
         <Button variant="secondary" onClick={() => navigate('/')}>
           View all builds
@@ -108,22 +108,6 @@ const Leveler: FC = () => {
       </Header>
 
       <ContentWrapper className={styles.sections}>
-        <div className={styles.section}>
-          <header className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Current items</h2>
-          </header>
-          <div className={styles.sectionContent}>
-            <div className={styles.itemSetups}>
-              {currentItemSetups.map((setup) => (
-                <ItemSetup
-                  key={setup.id}
-                  itemSetup={setup}
-                  className={styles.itemSetup}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
         <div className={cn(styles.section, styles.skillsSection)}>
           <header className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Current gems</h2>
@@ -142,6 +126,24 @@ const Leveler: FC = () => {
             </div>
           </div>
         </div>
+        {hasItems && (
+          <div className={styles.section}>
+            <header className={styles.sectionHeader}>
+              <h2 className={styles.sectionTitle}>Current items</h2>
+            </header>
+            <div className={styles.sectionContent}>
+              <div className={styles.itemSetups}>
+                {currentItemSetups.map((setup) => (
+                  <ItemSetup
+                    key={setup.id}
+                    itemSetup={setup}
+                    className={styles.itemSetup}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </ContentWrapper>
       <Notifications
         notifications={notifications}

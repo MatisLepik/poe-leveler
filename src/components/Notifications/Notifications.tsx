@@ -20,6 +20,8 @@ export default function Notifications({
   isOpen,
   toggle,
 }: NotificationsProps) {
+  if (notifications.length === 0) return null;
+
   return (
     <div className={cn(styles.root, { [styles.isOpen]: isOpen })}>
       <UnstyledButton
@@ -29,27 +31,16 @@ export default function Notifications({
       >
         <ChevronLeft className={styles.togglerIcon} />
       </UnstyledButton>
-      {notifications.length > 0 ? (
-        <ol className={styles.notifications}>
-          {notifications.map((notification) => (
-            <Notification
-              key={notification.id}
-              className={styles.notification}
-              notification={notification}
-              remove={removeNotification}
-            />
-          ))}
-        </ol>
-      ) : (
-        <div className={styles.noContent}>
-          <h2 className={styles.title}>Notifications</h2>
-          <p>
-            Nothing interesting has happened yet!
-            <br />
-            Here you will see messages when you unlock new gems or items.
-          </p>
-        </div>
-      )}
+      <ol className={styles.notifications}>
+        {notifications.map((notification) => (
+          <Notification
+            key={notification.id}
+            className={styles.notification}
+            notification={notification}
+            remove={removeNotification}
+          />
+        ))}
+      </ol>
     </div>
   );
 }
