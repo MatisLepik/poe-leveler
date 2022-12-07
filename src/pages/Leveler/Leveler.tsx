@@ -171,10 +171,7 @@ const Leveler: FC = () => {
         </ContentWrapper>
       </footer>
       {showUpgradesModal && (
-        <Modal
-          title="Upcoming upgrades"
-          dismiss={() => setUpgradesModal(false)}
-        >
+        <Modal title="Next upgrades" dismiss={() => setUpgradesModal(false)}>
           <NextUpgrades build={build} level={level} />
         </Modal>
       )}

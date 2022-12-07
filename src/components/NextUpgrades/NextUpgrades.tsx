@@ -15,7 +15,7 @@ const NextUpgrades: FC<NextUpgradesProps> = ({ build, level }) => {
   const nextBreakpoints = useMemo(
     () => getBreakpoints(build, level),
     [build, level]
-  ).slice(0, 4);
+  );
 
   if (nextBreakpoints.length === 0) {
     return <div className={styles.finished}>All done!</div>;
