@@ -27,6 +27,15 @@
       "dex": 22
     }
   },
+  "Alchemist's Mark": {
+    "name": "Alchemist's Mark",
+    "reqLvl": 24,
+    "color": "G",
+    "isSupport": false,
+    "minimumStatRequirements": {
+      "dex": 58
+    }
+  },
   "Ambush": {
     "name": "Ambush",
     "reqLvl": 34,
@@ -1219,6 +1228,15 @@
       "int": 37
     }
   },
+  "Galvanic Field": {
+    "name": "Galvanic Field",
+    "reqLvl": 16,
+    "color": "B",
+    "isSupport": false,
+    "minimumStatRequirements": {
+      "int": 41
+    }
+  },
   "Detonate Mines": {
     "name": "Detonate Mines",
     "color": "W",
@@ -1501,6 +1519,15 @@
     "isSupport": false,
     "minimumStatRequirements": {
       "dex": 33
+    }
+  },
+  "Lightning Conduit": {
+    "name": "Lightning Conduit",
+    "reqLvl": 28,
+    "color": "B",
+    "isSupport": false,
+    "minimumStatRequirements": {
+      "int": 67
     }
   },
   "Stormblast Mine": {
@@ -3657,6 +3684,15 @@
     "isSupport": true,
     "minimumStatRequirements": {
       "int": 52
+    }
+  },
+  "Overcharge Support": {
+    "name": "Overcharge Support",
+    "reqLvl": 18,
+    "color": "B",
+    "isSupport": true,
+    "minimumStatRequirements": {
+      "int": 33
     }
   },
   "Volley Support": {
