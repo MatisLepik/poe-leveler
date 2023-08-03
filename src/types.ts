@@ -1,24 +1,24 @@
 export type Ascendancy = {
   name:
-    | 'Ascendant'
-    | 'Juggernaut'
-    | 'Berserker'
-    | 'Chieftain'
-    | 'Raider'
-    | 'Deadeye'
-    | 'Pathfinder'
-    | 'Occultist'
-    | 'Elementalist'
-    | 'Necromancer'
-    | 'Slayer'
-    | 'Gladiator'
-    | 'Champion'
-    | 'Inquisitor'
-    | 'Hierophant'
-    | 'Guardian'
-    | 'Assassin'
-    | 'Trickster'
-    | 'Saboteur';
+  | 'Ascendant'
+  | 'Juggernaut'
+  | 'Berserker'
+  | 'Chieftain'
+  | 'Raider'
+  | 'Deadeye'
+  | 'Pathfinder'
+  | 'Occultist'
+  | 'Elementalist'
+  | 'Necromancer'
+  | 'Slayer'
+  | 'Gladiator'
+  | 'Champion'
+  | 'Inquisitor'
+  | 'Hierophant'
+  | 'Guardian'
+  | 'Assassin'
+  | 'Trickster'
+  | 'Saboteur';
   className: string;
 };
 
@@ -59,17 +59,19 @@ export type Gem = GemJSON & {
   };
 };
 
+export type LevelRequirement = number | null;
+
 export type SkillSetup = {
   id: string;
-  from: number;
-  to: number;
+  from: LevelRequirement;
+  to: LevelRequirement;
   links: Gem[];
 };
 
 export type ItemSetup = {
   id: string;
-  from: number;
-  to: number;
+  from: LevelRequirement;
+  to: LevelRequirement;
   name: string;
   notes?: string | undefined;
 };
@@ -95,10 +97,11 @@ export type Build = {
   tasks: Task[];
 };
 
+
 export type SkillSetupJSON = {
   id: string;
-  from: number;
-  to: number;
+  from: LevelRequirement;
+  to: LevelRequirement;
   links: GemJSON[];
 };
 

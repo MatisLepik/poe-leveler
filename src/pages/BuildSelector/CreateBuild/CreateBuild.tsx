@@ -51,15 +51,16 @@ const getError = ({
     return 'Please select a starting level for every task.';
   }
 
-  if (
-    [...itemSetups, ...skillSetups].some(
-      (setup) => setup.from === 0 || setup.to === 0
-    )
-  ) {
-    return 'Please select start and end levels for your skill/item setups.';
+  if ([...itemSetups, ...skillSetups].some((setup) => setup.from === 0)) {
+    return 'Please select start level for your skill/item setups.';
   }
 
-  if ([...itemSetups, ...skillSetups].some((setup) => setup.from > setup.to)) {
+  if (
+    [...itemSetups, ...skillSetups].some(
+      (setup) =>
+        setup.from !== null && setup.to !== null && setup.from > setup.to
+    )
+  ) {
     return "Gem's starting level cannot be higher than ending level.";
   }
 

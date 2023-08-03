@@ -95,14 +95,14 @@ export const makeGem = (): GemJSON => ({
 
 export const makeSkillSetup = (): SkillSetupJSON => ({
   from: 0,
-  to: 0,
+  to: null,
   links: [makeGem()],
   id: uuidv4(),
 });
 
 export const makeItemSetup = (): ItemSetup => ({
   from: 0,
-  to: 0,
+  to: null,
   name: '',
   id: uuidv4(),
 });

@@ -9,6 +9,7 @@ import styles from './SkillSetupSelector.module.scss';
 import Button from '../Button';
 import Autocomplete from '../Autocomplete';
 import { makeGem, makeSkillSetup } from '../../build';
+import { changeLevelRequirement } from '../../utils/setups';
 
 type SkillSetupSelectorProps = {
   value: SkillSetupJSON[];
@@ -32,28 +33,15 @@ const SkillSetupSelector: FC<SkillSetupSelectorProps> = ({
     changedSetup: SkillSetupJSON,
     event: ChangeEvent<HTMLInputElement>
   ) => {
-    const { name, value: eventValue } = event.target;
-
-    if (name !== 'from' && name !== 'to') throw new Error('Invalid input name');
-
-    const number = Number(eventValue);
-
-    if (isNaN(number) || number < 0 || number > 100) return;
-
-    onChange(
-      produce(value, (draft) => {
-        const matchingSetup = draft.find(
-          (setup) => setup.id === changedSetup.id
-        );
-
-        if (!matchingSetup) {
-          console.error('Unexpected situation', draft, changedSetup);
-          return;
-        }
-
-        matchingSetup[name] = number;
-      })
+    const type = event.target.name;
+    if (type !== 'from' && type !== 'to') throw new Error('Invalid input name');
+    const newValue = changeLevelRequirement(
+      value,
+      changedSetup,
+      type,
+      event.target.value
     );
+    if (newValue) onChange(newValue);
   };
 
   const handleGemChange = (
@@ -165,7 +153,6 @@ const SkillSetupSelector: FC<SkillSetupSelectorProps> = ({
                   name="from"
                   value={setup.from || ''}
                   placeholder="From"
-                  required
                   min="0"
                   autoFocus
                   onChange={(event) => handleLevelChange(setup, event)}
@@ -177,7 +164,6 @@ const SkillSetupSelector: FC<SkillSetupSelectorProps> = ({
                   value={setup.to || ''}
                   placeholder="To"
                   max="100"
-                  required
                   onChange={(event) => handleLevelChange(setup, event)}
                 />
               </div>

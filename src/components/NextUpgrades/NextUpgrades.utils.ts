@@ -48,7 +48,7 @@ const getSupportUpgrades = (build: Build, currentLevel: number): GemUpgrade[] =>
             return (
               gem.reqLvl !== setupLevel &&
               gem.reqLvl > currentLevel &&
-              gem.reqLvl <= setup.to
+              (setup.to === null || gem.reqLvl <= setup.to)
             );
           })
           .map<GemUpgrade>((gem) => {
@@ -71,21 +71,21 @@ const getSetupUpgrades = (
   currentLevel: number
 ): (SkillUpgrade | ItemUpgrade)[] => {
   const unachievedSetups = [...build.itemSetups, ...build.skillSetups].filter(
-    (setup) => setup.from > currentLevel
+    (setup) => setup.from !== null && setup.from > currentLevel
   );
 
   return unachievedSetups.map((setup) =>
     'links' in setup
       ? {
-          type: UpgradeType.Skill,
-          level: setup.from,
-          setup,
-        }
+        type: UpgradeType.Skill,
+        level: setup.from as number,
+        setup,
+      }
       : {
-          type: UpgradeType.Item,
-          level: setup.from,
-          setup,
-        }
+        type: UpgradeType.Item,
+        level: setup.from as number,
+        setup,
+      }
   );
 };
 
