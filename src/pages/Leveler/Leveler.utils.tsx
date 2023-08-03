@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { uniqBy } from 'lodash';
 import GemPreview from '../../components/GemPreview';
 import Celebration from '../../components/icons/Celebration';
 import Sword from '../../components/icons/Sword';
@@ -71,13 +72,14 @@ export function useBuildNotifications(
     }
 
     if (newSupportSkills.length > 0) {
+      const uniqueSupports = uniqBy(newSupportSkills, 'name');
       addNotification(
         `New ${
-          newSupportSkills.length === 1 ? 'support' : 'supports'
+          uniqueSupports.length === 1 ? 'support' : 'supports'
         } equippable`,
         <div className={styles.skillSetupNotificationContent}>
           <ul className={styles.resetList}>
-            {newSupportSkills.map((gem) => (
+            {uniqueSupports.map((gem) => (
               <GemPreview key={gem.name} gem={gem} variant="minimal" />
             ))}
           </ul>
