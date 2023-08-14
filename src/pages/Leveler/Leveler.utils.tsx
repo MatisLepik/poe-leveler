@@ -25,6 +25,21 @@ export function useBuildNotifications(
 
   useEffect(() => {
     if (
+      previousLevel != null &&
+      (level <= previousLevel || previousLevel === level)
+    ) {
+      return;
+    }
+
+    const newTasks = build.tasks.filter((task) => task.from === level);
+
+    newTasks.forEach((task) =>
+      addNotification(`New task unlocked`, task.message, Task)
+    );
+  }, [addNotification, build, level, previousLevel]);
+
+  useEffect(() => {
+    if (
       previousLevel == null ||
       level <= previousLevel ||
       previousLevel === level
@@ -47,8 +62,6 @@ export function useBuildNotifications(
       .filter((setup) => setup.from !== level)
       .flatMap((setup) => setup.links)
       .filter((gem) => gem.reqLvl === level);
-
-    const newTasks = build.tasks.filter((task) => task.from === level);
 
     if (newSkillSetups.length > 0) {
       addNotification(
@@ -87,10 +100,6 @@ export function useBuildNotifications(
         Celebration
       );
     }
-
-    newTasks.forEach((task) =>
-      addNotification(`New task unlocked`, task.message, Task)
-    );
   }, [
     level,
     previousLevel,
