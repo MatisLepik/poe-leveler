@@ -36,23 +36,9 @@ const ascendancyOptions = ascendancies.map((ascendancy) => ({
   label: `${ascendancy.name} (${ascendancy.className})`,
 }));
 
-const getError = ({
-  name,
-  ascendancy,
-  skillSetups,
-  itemSetups,
-  tasks,
-}: FormType) => {
+const getError = ({ name, ascendancy, skillSetups, itemSetups }: FormType) => {
   if (!name || !ascendancy) {
     return 'Please fill all the fields.';
-  }
-
-  if (tasks.some((task) => task.from === 0)) {
-    return 'Please select a starting level for every task.';
-  }
-
-  if ([...itemSetups, ...skillSetups].some((setup) => setup.from === 0)) {
-    return 'Please select start level for your skill/item setups.';
   }
 
   if (

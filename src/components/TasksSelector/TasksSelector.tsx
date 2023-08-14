@@ -104,7 +104,6 @@ const TasksSelector: FC<TasksSelectorProps> = ({ value, onChange }) => {
                   name="from"
                   value={setup.from || ''}
                   placeholder="0"
-                  required
                   min="0"
                   onChange={(event) => handleLevelChange(setup, event)}
                 />

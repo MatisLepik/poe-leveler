@@ -101,14 +101,14 @@ export const makeSkillSetup = (): SkillSetupJSON => ({
 });
 
 export const makeItemSetup = (): ItemSetup => ({
-  from: 0,
+  from: 1,
   to: null,
   name: '',
   id: uuidv4(),
 });
 
 export const makeTask = (): Task => ({
-  from: 0,
+  from: 1,
   message: '',
   id: uuidv4(),
 });
