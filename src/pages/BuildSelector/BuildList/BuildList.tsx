@@ -5,16 +5,37 @@ import Button from '../../../components/Button';
 import ContentWrapper from '../../../components/ContentWrapper';
 import Header from '../../../components/Header';
 import PageRoot from '../../../components/PageRoot';
-import useBuildSaves from '../../../hooks/useBuildSaves';
+import useBuildSaves, { BuildSave } from '../../../hooks/useBuildSaves';
 import jsonpack from 'jsonpack';
+import produce from 'immer';
 
 import styles from './BuildList.module.scss';
 import CopyButton from '../../../components/CopyButton';
 import OpenBuildButton from '../../../components/OpenBuildButton';
+import Clear from '../../../components/icons/Clear';
 
 const BuildList: FC = () => {
   const navigate = useNavigate();
-  const [buildSaves] = useBuildSaves();
+  const [buildSaves, setBuildSaves] = useBuildSaves();
+
+  const removeSave = (save: BuildSave) => {
+    setBuildSaves((prev) =>
+      produce(prev, (draft) => {
+        const existing = buildSaves.findIndex(
+          (stored) => stored.build.id === save.build.id
+        );
+
+        if (existing !== -1) {
+          draft.splice(existing, 1);
+        }
+      })
+    );
+  };
+
+  const confirmRemoval = (save: BuildSave) => {
+    if (confirm('Are you sure you wish to delete this build?'))
+      removeSave(save);
+  };
 
   return (
     <PageRoot className={styles.root}>
@@ -41,7 +62,14 @@ const BuildList: FC = () => {
                   >
                     Edit
                   </Button>
+
                   <CopyButton getText={() => jsonpack.pack(save.build)} />
+                  <Button
+                    variant="secondary"
+                    onClick={() => confirmRemoval(save)}
+                  >
+                    <Clear />
+                  </Button>
                   <OpenBuildButton buildId={save.build.id} />
                 </div>
               </li>
