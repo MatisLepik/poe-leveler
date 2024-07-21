@@ -4621,23 +4621,5 @@
     "minimumStatRequirements": {
       "int": 58
     }
-  },
-  "Momentum Support": {
-    "name": "Momentum Support",
-    "reqLvl": 1,
-    "color": "G",
-    "isSupport": true,
-    "minimumStatRequirements": {
-      "dex": 0
-    }
-  },
-  "Blade Trap": {
-    "name": "Blade Trap",
-    "reqLvl": 12,
-    "color": "G",
-    "isSupport": false,
-    "minimumStatRequirements": {
-      "dex": 0
-    }
   }
 }
