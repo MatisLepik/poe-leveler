@@ -110,6 +110,7 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    save();
     navigate('/');
   };
 
