@@ -36,14 +36,13 @@
 }
 
 .primary {
-  color: var(--color-bg);
-  background-color: var(--color-highlight-bright);
+  background-color: var(--color-highlight-dark);
 
   &:not([aria-disabled='true']) {
     &:hover,
     &:focus-visible {
       outline: none;
-      background-color: var(--color-hover-highlight);
+      background-color: var(--color-highlight-dark-hover);
     }
   }
 }
@@ -72,7 +71,7 @@
     &:hover,
     &:focus-visible {
       outline: none;
-      background-color: var(--color-bg-lighter);
+      background-color: var(--color-bg-lightest-hover);
     }
   }
 }

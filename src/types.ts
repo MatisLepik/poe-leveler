@@ -59,7 +59,6 @@ export type GemJSON = {
   name: string;
   id: string;
   notes?: string | undefined;
-  maxLevel?: number;
 };
 
 export type GemAcquisition = {

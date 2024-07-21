@@ -61,12 +61,7 @@ export default function GemPreview({
     >
       <div className={`${styles.dot} ${styles[`color-${gem.color}`]}`} />
       <div className={styles.content}>
-        <div className={styles.title}>
-          {gem.name}{' '}
-          {gem.maxLevel && variant === 'regular' ? (
-            <span className={styles.maxLevel}>{gem.maxLevel}</span>
-          ) : null}
-        </div>
+        <div className={styles.title}>{gem.name}</div>
         {renderAcquisition()}
         {variant === 'regular' && gem.notes ? (
           <div className={styles.extra}>{gem.notes}</div>

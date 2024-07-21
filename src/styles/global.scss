@@ -12,12 +12,15 @@
   --color-bg: #151515;
   --color-bg-lighter: #1c1c1c;
   --color-bg-lightest: #333;
+  --color-bg-lightest-hover: #{color.scale(#333, $lightness: 10%)};
+  --color-highlight-dark: #146194;
+  --color-highlight-dark-hover: #{color.scale(#146194, $lightness: 10%)};
   --color-highlight: #2687c8;
+  --color-highlight: #{color.scale(#2687c8, $lightness: 10%)};;
   --color-highlight-bright: #2ba4f6;
   --color-negative: #dd7070;
   --color-negative-hover: #{color.scale(#dd7070, $lightness: 10%)};
   --color-positive: #70d470;
-  --color-hover-highlight: #{color.scale(#2ba4f6, $lightness: 10%)};
   --color-border: rgba(255, 255, 255, 0.2);
   --color-border-weaker: rgba(255, 255, 255, 0.1);
   --shadow-sm-down: 0px 2px 2px 0px rgb(0 0 0 / 30%);
@@ -101,7 +104,7 @@ a.link-blue {
   color: var(--color-highlight);
 
   &:hover {
-    color: var(--color-hover-highlight);
+    color: var(--color-highlight-hover);
   }
 }
 
