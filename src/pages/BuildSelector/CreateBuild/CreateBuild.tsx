@@ -28,7 +28,7 @@ type FormType = {
 };
 
 type CreateBuildProps = {
-  initialValues?: FormType;
+  initialValues?: BuildJSON;
 };
 
 const ascendancyOptions = ascendancies.map((ascendancy) => ({
@@ -76,7 +76,6 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
     ...args
   ) => {
     setEdited(true);
-    console.trace('setValues', true);
     return setValues(...args);
   };
 

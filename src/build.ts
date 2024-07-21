@@ -31,6 +31,20 @@ const isValidSkillName = (name: string): name is keyof typeof gems => {
   return name in gems === true;
 };
 
+const validateSkillSetup = (
+  skillSetup: unknown
+): skillSetup is SkillSetupJSON => {
+  if (!isObject(skillSetup)) {
+    throw new Error('Invalid gem configuration (skill setup not configured)');
+  }
+
+  if (!Array.isArray(skillSetup.links)) {
+    throw new Error('Invalid gem configuration (links is not an array)');
+  }
+
+  return true;
+};
+
 /**
  * This function has a bunch of naive casting, but I don't wanna go too crazy validating the JSON
  */
@@ -47,18 +61,11 @@ export const getBuild = (input: unknown): Build => {
     const build = {
       ...input,
       skillSetups: input.skillSetups.map((skillSetup: unknown): SkillSetup => {
-        if (!isObject(skillSetup)) {
-          throw new Error(
-            'Invalid gem configuration (skill setup not configured)'
-          );
-        }
-
-        if (!Array.isArray(skillSetup.links)) {
-          throw new Error('Invalid gem configuration (links is not an array)');
-        }
+        if (!validateSkillSetup(skillSetup))
+          throw new Error('Invalid skill setup found');
 
         return {
-          ...(skillSetup as SkillSetup),
+          ...skillSetup,
           links: sortBy(
             skillSetup.links.map(({ name, ...gemData }) => {
               if (!isValidSkillName(name)) {
@@ -68,7 +75,7 @@ export const getBuild = (input: unknown): Build => {
               }
               return {
                 ...gemData,
-                ...(gems[name] as Gem),
+                ...(gems[name] as Omit<Gem, 'id'>),
               };
             }),
             (link) => ['R', 'G', 'B', 'W'].indexOf(link.color)

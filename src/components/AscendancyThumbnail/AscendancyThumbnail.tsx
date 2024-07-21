@@ -14,7 +14,7 @@ import Juggernaut from '../../images/ascendancies/Juggernaut.png';
 import Necromancer from '../../images/ascendancies/Necromancer.png';
 import Occultist from '../../images/ascendancies/Occultist.png';
 import Pathfinder from '../../images/ascendancies/Pathfinder.png';
-import Raider from '../../images/ascendancies/Raider.png';
+import Warden from '../../images/ascendancies/Raider.png';
 import Saboteur from '../../images/ascendancies/Saboteur.png';
 import Slayer from '../../images/ascendancies/Slayer.png';
 import Trickster from '../../images/ascendancies/Trickster.png';
@@ -38,7 +38,7 @@ const thumbnails: Record<Ascendancy['name'], string> = {
   Necromancer,
   Occultist,
   Pathfinder,
-  Raider,
+  Warden,
   Saboteur,
   Slayer,
   Trickster,

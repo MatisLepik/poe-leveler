@@ -6,7 +6,6 @@ import Button from '../../components/Button';
 import SkillSetup from '../../components/SkillSetup';
 import ItemSetup from '../../components/ItemSetup';
 import useLocalStorageState from 'use-local-storage-state';
-import StatRequirements from '../../components/StatRequirements';
 import Notifications from '../../components/Notifications';
 import Header from '../../components/Header';
 import PageRoot from '../../components/PageRoot';
@@ -99,7 +98,6 @@ const Leveler: FC = () => {
         <div className={cn(styles.section, styles.skillsSection)}>
           <header className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Current gems</h2>
-            <StatRequirements skillSetups={currentSkillSetups} />
           </header>
           <div className={styles.sectionContent}>
             <div className={styles.skillSetups}>
@@ -109,6 +107,7 @@ const Leveler: FC = () => {
                   skillSetup={setup}
                   className={styles.skillSetup}
                   level={level}
+                  build={build}
                 />
               ))}
             </div>

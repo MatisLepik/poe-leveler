@@ -3,6 +3,7 @@
   height: 12px;
   border-radius: 50%;
   display: inline-block;
+  margin-top: 4px;
 }
 
 .color-R {
@@ -23,7 +24,7 @@
 
 .root {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
 
   &.active .title {

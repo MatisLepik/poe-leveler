@@ -1,0 +1,67 @@
+{
+  "a_fixture_of_fate": {
+    "act": 3,
+    "npc": "Siosa",
+    "howto": "Collect pages (Library)"
+  },
+  "breaking_some_eggs": {
+    "act": 1,
+    "npc": "Nessa",
+    "howto": "Collect seashells (Mud Flats)"
+  },
+  "breaking_the_seal": {
+    "act": 4,
+    "npc": "Petarus and Vanja",
+    "howto": "Kill Voll (Dried Lake)"
+  },
+  "enemy_at_the_gate": {
+    "act": 1,
+    "npc": "Nessa",
+    "howto": "Kill Hillock (Twilight Strand)"
+  },
+  "intruders_in_black": {
+    "act": 2,
+    "npc": "Yeena",
+    "howto": "Find Helena (Chamber of Sins)"
+  },
+  "lost_in_love": {
+    "act": 3,
+    "npc": "Clarissa",
+    "howto": "Find Tolman (Crematorium)"
+  },
+  "mercy_mission": {
+    "act": 1,
+    "npc": "Nessa",
+    "howto": "Kill Hailrake (Tidal Island)"
+  },
+  "sever_the_right_hand": {
+    "act": 3,
+    "npc": "Clarissa",
+    "howto": "Kill Gravicius (Ebony Barracks)"
+  },
+  "sharp_and_cruel": {
+    "act": 2,
+    "npc": "Yeena",
+    "howto": "Kill the Weaver (Weaver's Chamber)"
+  },
+  "the_caged_brute": {
+    "act": 1,
+    "npc": "Nessa",
+    "howto": "Kill Brutus (Upper Prison)"
+  },
+  "the_eternal_nightmare": {
+    "act": 4,
+    "npc": "Petarus and Vanja",
+    "howto": "Kill Malachai (Black Core)"
+  },
+  "the_root_of_the_problem": {
+    "act": 2,
+    "npc": "Yeena",
+    "howto": "Poison the tree (Wetlands)"
+  },
+  "the_siren_s_cadence": {
+    "act": 1,
+    "npc": "Yeena",
+    "howto": "Kill Merveil (Cavern of Anger)"
+  }
+}

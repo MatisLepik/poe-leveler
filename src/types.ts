@@ -1,10 +1,18 @@
-export type Ascendancy = {
-  name:
+export type ClassName =
+  | 'Scion'
+  | 'Marauder'
+  | 'Ranger'
+  | 'Witch'
+  | 'Duelist'
+  | 'Templar'
+  | 'Shadow';
+
+export type AscendancyName =
   | 'Ascendant'
   | 'Juggernaut'
   | 'Berserker'
   | 'Chieftain'
-  | 'Raider'
+  | 'Warden'
   | 'Deadeye'
   | 'Pathfinder'
   | 'Occultist'
@@ -19,7 +27,10 @@ export type Ascendancy = {
   | 'Assassin'
   | 'Trickster'
   | 'Saboteur';
-  className: string;
+
+export type Ascendancy = {
+  name: AscendancyName;
+  className: ClassName;
 };
 
 export enum GemColor {
@@ -47,16 +58,18 @@ export type GemJSON = {
   maxLevel?: number;
 };
 
+export type GemAcquisition = {
+  npc: string;
+  questName: string | null;
+  isReward: boolean;
+};
+
 export type Gem = GemJSON & {
   name: string;
   reqLvl: number;
   color: GemColor;
   isSupport: boolean;
-  minimumStatRequirements: {
-    [Stat.str]?: number;
-    [Stat.dex]?: number;
-    [Stat.int]?: number;
-  };
+  acquisitionByClass: Record<ClassName, GemAcquisition>;
 };
 
 export type LevelRequirement = number | null;
@@ -91,12 +104,11 @@ export type Task = {
 export type Build = {
   id: string;
   name: string;
-  ascendancy: Ascendancy['name'];
+  ascendancy: AscendancyName;
   skillSetups: SkillSetup[];
   itemSetups: ItemSetup[];
   tasks: Task[];
 };
-
 
 export type SkillSetupJSON = {
   id: string;

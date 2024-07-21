@@ -24,7 +24,11 @@ const NextUpgrades: FC<NextUpgradesProps> = ({ build, level }) => {
   return (
     <ol className={styles.root}>
       {nextBreakpoints.map((breakpoint) => (
-        <LevelBreakpoint key={breakpoint.level} breakpoint={breakpoint} />
+        <LevelBreakpoint
+          key={breakpoint.level}
+          breakpoint={breakpoint}
+          build={build}
+        />
       ))}
     </ol>
   );
