@@ -83,17 +83,21 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
     setShowErrors(false);
   }, [values]);
 
-  const save = () => {
+  /**
+   * Returns null if no build was created
+   */
+  const save = (): BuildJSON | null => {
     if (!isValid) {
       setShowErrors(true);
-      return;
+      return null;
     }
 
     setEdited(false);
 
+    const build = { ...values, id: values.id ?? uuidv4() } as BuildJSON;
+
     setBuildSaves((prev) =>
       produce(prev, (draft) => {
-        const build = { ...values, id: values.id ?? uuidv4() } as BuildJSON;
         const existing = buildSaves.findIndex(
           (stored) => stored.build.id === build.id
         );
@@ -106,6 +110,18 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
         }
       })
     );
+
+    return build;
+  };
+
+  const saveAndEdit = () => {
+    const build = save();
+    if (build) {
+      navigate(`/builds/${build.id}/edit`, {});
+      setTimeout(() => {
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+    }
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -200,7 +216,7 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
                 type="button"
                 variant="secondary"
                 disabled={!isEdited}
-                onClick={save}
+                onClick={saveAndEdit}
               >
                 Save
               </Button>
