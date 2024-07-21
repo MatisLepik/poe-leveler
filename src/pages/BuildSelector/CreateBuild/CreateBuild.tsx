@@ -57,6 +57,7 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
   const navigate = useNavigate();
   const [showErrors, setShowErrors] = useState(false);
   const [buildSaves, setBuildSaves] = useBuildSaves();
+  const [isEdited, setEdited] = useState(false);
   const [values, setValues] = useState<FormType>(
     () =>
       initialValues ?? {
@@ -71,17 +72,25 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
   const error = getError(values);
   const isValid = error === null;
 
+  const editValues: React.Dispatch<React.SetStateAction<FormType>> = (
+    ...args
+  ) => {
+    setEdited(true);
+    console.trace('setValues', true);
+    return setValues(...args);
+  };
+
   useEffect(() => {
     setShowErrors(false);
   }, [values]);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const save = () => {
     if (!isValid) {
       setShowErrors(true);
       return;
     }
+
+    setEdited(false);
 
     setBuildSaves((prev) =>
       produce(prev, (draft) => {
@@ -98,7 +107,10 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
         }
       })
     );
+  };
 
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     navigate('/');
   };
 
@@ -108,22 +120,22 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
     const { name, value } = event.target;
     changeRef.current = true;
 
-    setValues((prev) => ({
+    editValues((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
   const setSkillSetups = (skillSetups: SkillSetupJSON[]) => {
-    setValues((prev) => ({ ...prev, skillSetups }));
+    editValues((prev) => ({ ...prev, skillSetups }));
   };
 
   const setItemSetups = (itemSetups: ItemSetup[]) => {
-    setValues((prev) => ({ ...prev, itemSetups }));
+    editValues((prev) => ({ ...prev, itemSetups }));
   };
 
   const setTasks = (tasks: Task[]) => {
-    setValues((prev) => ({ ...prev, tasks }));
+    editValues((prev) => ({ ...prev, tasks }));
   };
 
   const handleBack = () => {
@@ -184,6 +196,14 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
 
             <div className={styles.actions}>
               <Button type="submit">Submit</Button>
+              <Button
+                type="button"
+                variant="secondary"
+                disabled={!isEdited}
+                onClick={save}
+              >
+                Save
+              </Button>
               {showErrors && error ? <div>{error}</div> : null}
             </div>
           </div>

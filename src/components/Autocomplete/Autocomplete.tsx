@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useState } from 'react';
-import Autosuggest from 'react-autosuggest';
+import Autosuggest, { OnSuggestionSelected } from 'react-autosuggest';
 import cn from 'classnames';
 
 import styles from './Autocomplete.module.scss';
@@ -72,12 +72,25 @@ const Autocomplete: FC<AutocompleteProps> = ({
     [setLocalValue]
   );
 
-  const handleBlur = () => {
-    if (options.some((option) => option.value === localValue)) {
-      onChange(localValue);
+  const select = (valueToSelect: string) => {
+    if (options.some((option) => option.value === valueToSelect)) {
+      if (valueToSelect !== value) {
+        onChange(valueToSelect);
+      }
     } else {
       setLocalValue('');
     }
+  };
+
+  const handleBlur = () => {
+    select(localValue);
+  };
+
+  const handleSuggestionSelected: OnSuggestionSelected<Option> = (
+    _,
+    { suggestion }
+  ) => {
+    select(suggestion.value);
   };
 
   return (
@@ -88,6 +101,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
       getSuggestionValue={getSuggestionValue}
       renderSuggestion={renderSuggestion}
       containerProps={{ className: cn(className, styles.root) }}
+      onSuggestionSelected={handleSuggestionSelected}
       inputProps={{
         placeholder,
         value: localValue,
