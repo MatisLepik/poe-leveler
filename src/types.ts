@@ -1,3 +1,5 @@
+import questsByName from './data/quests.json';
+
 export type ClassName =
   | 'Scion'
   | 'Marauder'
@@ -46,6 +48,8 @@ export enum Stat {
   'int' = 'int',
 }
 
+export type QuestNames = keyof typeof questsByName;
+
 export enum PassiveActionType {
   allocate = 'allocate',
   unallocate = 'unallocate',
@@ -60,7 +64,7 @@ export type GemJSON = {
 
 export type GemAcquisition = {
   npc: string;
-  questName: string | null;
+  questName: QuestNames | null;
   isReward: boolean;
 };
 

@@ -4,6 +4,7 @@ import { Build, Gem } from '../../types';
 
 import styles from './GemPreview.module.scss';
 import { getClassName } from '../../utils/classes';
+import QuestName from '../QuestName';
 
 type SkillPreviewProps = {
   gem: Gem;
@@ -36,7 +37,7 @@ export default function GemPreview({
     if (acquisition.questName) {
       return (
         <div className={styles.extra}>
-          <span>{acquisition.questName}</span>
+          <QuestName questName={acquisition.questName} />
           &nbsp;
           <span>
             ({acquisition.npc},{acquisition.isReward ? ' reward' : ' buy'})

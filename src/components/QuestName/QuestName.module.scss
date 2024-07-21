@@ -1,0 +1,28 @@
+.questName {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+.hoverOverlay {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 12px 8px 12px;
+    background-color: var(--color-bg-lightest);
+    border-radius: 8px;
+    transition: opacity 150ms, visibility 150ms;
+    box-shadow: var(--shadow-lg-overlay);
+}
+
+.infoBubble {
+    border-radius: 4px;
+    margin-bottom: 4px;
+    padding: 0px 6px;
+    height: 18px;
+    line-height: 18px;
+    background-color: var(--color-highlight);
+    align-self: flex-start;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+}
