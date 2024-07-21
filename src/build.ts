@@ -66,20 +66,17 @@ export const getBuild = (input: unknown): Build => {
 
         return {
           ...skillSetup,
-          links: sortBy(
-            skillSetup.links.map(({ name, ...gemData }) => {
-              if (!isValidSkillName(name)) {
-                throw new Error(
-                  `Invalid gem configuration (${name} is not a valid name)`
-                );
-              }
-              return {
-                ...gemData,
-                ...(gems[name] as Omit<Gem, 'id'>),
-              };
-            }),
-            (link) => ['R', 'G', 'B', 'W'].indexOf(link.color)
-          ),
+          links: skillSetup.links.map(({ name, ...gemData }) => {
+            if (!isValidSkillName(name)) {
+              throw new Error(
+                `Invalid gem configuration (${name} is not a valid name)`
+              );
+            }
+            return {
+              ...gemData,
+              ...(gems[name] as Omit<Gem, 'id'>),
+            };
+          }),
         };
       }),
     };

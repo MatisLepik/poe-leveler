@@ -4,9 +4,18 @@ import produce from 'immer';
 
 export const getSkillSetups = (build: Build, level: number) => {
   return orderBy(
-    build.skillSetups.filter(
-      (setup) => (setup.from === null || level >= setup.from) && (setup.to === null || level <= setup.to)
-    ),
+    build.skillSetups
+      // Filter out setups where from/to is out of range
+      .filter(
+        (setup) =>
+          (setup.from === null || level >= setup.from) &&
+          (setup.to === null || level <= setup.to)
+      )
+      // Filter out setups that have nothing active available at current leve
+      .filter((setup) =>
+        setup.links.some((gem) => !gem.isSupport && gem.reqLvl <= level)
+      ),
+
     [(setup) => setup.from],
     ['asc']
   );
@@ -15,7 +24,9 @@ export const getSkillSetups = (build: Build, level: number) => {
 export const getItemSetups = (build: Build, level: number) => {
   return orderBy(
     build.itemSetups.filter(
-      (setup) => (setup.from === null || level >= setup.from) && (setup.to === null || level <= setup.to)
+      (setup) =>
+        (setup.from === null || level >= setup.from) &&
+        (setup.to === null || level <= setup.to)
     ),
     [(setup) => setup.from, 'desc']
   );
