@@ -23,6 +23,8 @@ const BuildOverview: FC<BuildOverviewProps> = ({ build, addedAt }) => {
       <AscendancyThumbnail
         ascendancy={build.ascendancy}
         className={styles.ascendancyImage}
+        width="87px"
+        height="40px"
       />
       <span className={styles.textContent}>
         <span className={styles.nameRow}>

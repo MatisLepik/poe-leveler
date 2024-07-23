@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes } from 'react';
+import { FC, ImgHTMLAttributes } from 'react';
 import Ascendant from '../../images/ascendancies/Ascendant.png';
 import Assassin from '../../images/ascendancies/Assassin.png';
 import Berserker from '../../images/ascendancies/Berserker.png';
@@ -44,7 +44,7 @@ const thumbnails: Record<Ascendancy['name'], string> = {
   Trickster,
 };
 
-type AscendancyThumbnailProps = HTMLAttributes<HTMLImageElement> & {
+type AscendancyThumbnailProps = ImgHTMLAttributes<HTMLImageElement> & {
   ascendancy: Ascendancy['name'];
 };
 
