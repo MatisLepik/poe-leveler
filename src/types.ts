@@ -111,6 +111,7 @@ export type Build = {
   skillSetups: SkillSetup[];
   itemSetups: ItemSetup[];
   tasks: Task[];
+  link: string | undefined;
 };
 
 export type SkillSetupJSON = {

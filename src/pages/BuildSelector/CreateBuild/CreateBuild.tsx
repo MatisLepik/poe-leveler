@@ -25,6 +25,7 @@ type FormType = {
   skillSetups: SkillSetupJSON[];
   itemSetups: ItemSetup[];
   tasks: Task[];
+  link: string | undefined;
 };
 
 type CreateBuildProps = {
@@ -66,6 +67,7 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
         skillSetups: [makeSkillSetup()],
         itemSetups: [],
         tasks: [],
+        link: undefined,
       }
   );
   const changeRef = useRef(false);
@@ -194,6 +196,15 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
                   required
                   name="ascendancy"
                   placeholder="Choose a value"
+                />
+              </Label>
+
+              <Label name="PoB link (optional)">
+                <Input
+                  name="link"
+                  value={values.link ?? ''}
+                  onChange={handleChange}
+                  required
                 />
               </Label>
             </div>

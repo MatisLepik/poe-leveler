@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { Build, BuildJSON } from '../../types';
 import AscendancyThumbnail from '../AscendancyThumbnail';
 
@@ -6,18 +6,10 @@ import styles from './BuildOverview.module.scss';
 
 type BuildOverviewProps = {
   build: BuildJSON | Build;
-  addedAt?: string;
+  description?: ReactNode;
 };
 
-const formatter = Intl.DateTimeFormat('default', {
-  year: '2-digit',
-  day: '2-digit',
-  month: '2-digit',
-  hour: '2-digit',
-  minute: '2-digit',
-});
-
-const BuildOverview: FC<BuildOverviewProps> = ({ build, addedAt }) => {
+const BuildOverview: FC<BuildOverviewProps> = ({ build, description }) => {
   return (
     <span className={styles.root}>
       <AscendancyThumbnail
@@ -27,16 +19,11 @@ const BuildOverview: FC<BuildOverviewProps> = ({ build, addedAt }) => {
         height="40px"
       />
       <span className={styles.textContent}>
-        <span className={styles.nameRow}>
+        <span className={styles.name}>
           <strong>{build.name}</strong> <small>({build.ascendancy})</small>
         </span>
-        {addedAt && (
-          <span className={styles.timeRow}>
-            Added{' '}
-            <time aria-label="Added at" dateTime={addedAt}>
-              {formatter.format(new Date(addedAt))}
-            </time>
-          </span>
+        {description && (
+          <span className={styles.description}>{description}</span>
         )}
       </span>
     </span>

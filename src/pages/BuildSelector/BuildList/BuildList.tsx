@@ -13,6 +13,7 @@ import styles from './BuildList.module.scss';
 import CopyButton from '../../../components/CopyButton';
 import OpenBuildButton from '../../../components/OpenBuildButton';
 import Clear from '../../../components/icons/Clear';
+import { formatDate } from '../../../utils/formatting';
 
 const BuildList: FC = () => {
   const navigate = useNavigate();
@@ -54,7 +55,17 @@ const BuildList: FC = () => {
           <ul className={styles.buildList}>
             {buildSaves.map((save) => (
               <li key={save.build.id} className={styles.buildRow}>
-                <BuildOverview build={save.build} addedAt={save.addedAt} />
+                <BuildOverview
+                  build={save.build}
+                  description={
+                    <>
+                      Added{' '}
+                      <time aria-label="Added at" dateTime={save.addedAt}>
+                        {formatDate(new Date(save.addedAt))}
+                      </time>
+                    </>
+                  }
+                />
                 <div className={styles.actions}>
                   <Button
                     variant="secondary"

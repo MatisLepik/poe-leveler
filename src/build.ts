@@ -9,7 +9,6 @@ import {
   Task,
 } from './types';
 import gems from './data/generated/gems.json';
-import sortBy from 'lodash/sortBy';
 
 const invalidCodeError = 'Invalid build code';
 

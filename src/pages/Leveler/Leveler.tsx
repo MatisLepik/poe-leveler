@@ -88,7 +88,21 @@ const Leveler: FC = () => {
 
   return (
     <PageRoot className={styles.root} noPadding>
-      <Header title={<BuildOverview build={build} />} className={styles.header}>
+      <Header
+        title={
+          <BuildOverview
+            build={build}
+            description={
+              build.link ? (
+                <a target="_blank" rel="noopener noreferrer" href={build.link}>
+                  {build.link}
+                </a>
+              ) : undefined
+            }
+          />
+        }
+        className={styles.header}
+      >
         <Button variant="secondary" onClick={() => navigate('/')}>
           View all builds
         </Button>

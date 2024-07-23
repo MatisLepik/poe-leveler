@@ -1,5 +1,4 @@
 import orderBy from 'lodash/orderBy';
-import groupBy from 'lodash/groupBy';
 
 import { Build, Gem, ItemSetup, SkillSetup } from '../../types';
 import { getSkillSetups } from '../../utils/setups';
@@ -77,15 +76,15 @@ const getSetupUpgrades = (
   return unachievedSetups.map((setup) =>
     'links' in setup
       ? {
-        type: UpgradeType.Skill,
-        level: setup.from as number,
-        setup,
-      }
+          type: UpgradeType.Skill,
+          level: setup.from as number,
+          setup,
+        }
       : {
-        type: UpgradeType.Item,
-        level: setup.from as number,
-        setup,
-      }
+          type: UpgradeType.Item,
+          level: setup.from as number,
+          setup,
+        }
   );
 };
 
