@@ -20,7 +20,7 @@
   z-index: 4;
 }
 
-.content {
+.modal {
   position: relative;
   background-color: var(--color-bg);
   max-width: 100%;
@@ -40,4 +40,8 @@
 
 .title {
   font-size: 24px;
+}
+
+.content {
+  padding: 8px;
 }
