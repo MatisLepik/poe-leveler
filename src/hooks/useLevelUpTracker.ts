@@ -6,6 +6,12 @@ export type LevelTrackStatus = {
   message: string;
 };
 
+declare global {
+  interface Window {
+    __INITIAL_STATUS__?: LevelTrackStatus | undefined;
+  }
+}
+
 export const useLevelUpTracker = (
   setLevel: React.Dispatch<React.SetStateAction<number>>
 ) => {
@@ -14,10 +20,12 @@ export const useLevelUpTracker = (
   });
 
   const [internalLevelTrackStatus, setLevelTrackStatus] =
-    useState<LevelTrackStatus>({
-      status: 'error',
-      message: 'Uninitialized',
-    });
+    useState<LevelTrackStatus>(
+      window.__INITIAL_STATUS__ ?? {
+        status: 'error',
+        message: 'Uninitialized',
+      }
+    );
 
   const levelTrackStatus = useMemo<LevelTrackStatus>(() => {
     if (!charName) return { status: 'warning', message: 'Please enter a name' };
