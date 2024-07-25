@@ -169,11 +169,9 @@ const CreateBuild: FC<CreateBuildProps> = ({ initialValues }) => {
   return (
     <PageRoot className={styles.root}>
       <Header title="PoE Leveler - Create build" className={styles.header}>
-        <div className={styles.actions}>
-          <Button variant="secondary" onClick={handleBack}>
-            Back to build list
-          </Button>
-        </div>
+        <Button variant="secondary" onClick={handleBack}>
+          Back to build list
+        </Button>
       </Header>
       <ContentWrapper>
         <form className={styles.form} onSubmit={handleSubmit}>

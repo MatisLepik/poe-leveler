@@ -13,7 +13,7 @@ const Header: FC<HeaderProps> = ({ className, title, children, ...props }) => {
     <header className={cn(styles.root, className)} {...props}>
       <ContentWrapper className={styles.content}>
         <h1 className={styles.title}>{title}</h1>
-        {children}
+        <div className={styles.actions}>{children}</div>
       </ContentWrapper>
     </header>
   );

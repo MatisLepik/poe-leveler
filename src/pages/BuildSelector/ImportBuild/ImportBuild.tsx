@@ -60,11 +60,9 @@ const ImportBuild: FC = () => {
   return (
     <PageRoot className={styles.root}>
       <Header title="PoE Leveler - Import build" className={styles.header}>
-        <div className={styles.actions}>
-          <Button variant="secondary" onClick={() => navigate('/')}>
-            Back to build list
-          </Button>
-        </div>
+        <Button variant="secondary" onClick={() => navigate('/')}>
+          Back to build list
+        </Button>
       </Header>
       <ContentWrapper>
         <p>

@@ -41,14 +41,12 @@ const BuildList: FC = () => {
   return (
     <PageRoot className={styles.root}>
       <Header title="PoE Leveler - Builds" className={styles.header}>
-        <div className={styles.actions}>
-          <Button variant="secondary" onClick={() => navigate('/create')}>
-            Create new build
-          </Button>
-          <Button variant="secondary" onClick={() => navigate('/import')}>
-            Import from code
-          </Button>
-        </div>
+        <Button variant="secondary" onClick={() => navigate('/create')}>
+          Create new build
+        </Button>
+        <Button variant="secondary" onClick={() => navigate('/import')}>
+          Import from code
+        </Button>
       </Header>
       <ContentWrapper>
         {buildSaves.length > 0 ? (
