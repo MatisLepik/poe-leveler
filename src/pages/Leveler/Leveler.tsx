@@ -1,7 +1,6 @@
 import cn from 'classnames';
-import { FC, useMemo, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import useEventListener from '@use-it/event-listener';
-
 import Button from '../../components/Button';
 import SkillSetup from '../../components/SkillSetup';
 import ItemSetup from '../../components/ItemSetup';
@@ -18,9 +17,11 @@ import { useBuildNotifications } from './Leveler.utils';
 import Modal from '../../components/Modal';
 import NextUpgrades from '../../components/NextUpgrades';
 import { getItemSetups, getSkillSetups } from '../../utils/setups';
-
 import styles from './Leveler.module.scss';
 import LinkColors from '../../components/LinkColors';
+import { playLevelUp } from '../../utils/soundEffects';
+import Input from '../../components/Input';
+import { isElectron } from '../../utils/electron';
 
 const Leveler: FC = () => {
   const { buildId } = useParams<{ buildId: string }>();
@@ -36,6 +37,9 @@ const Leveler: FC = () => {
 
   if (!build) throw new Error('Failed to find build with this id');
 
+  const [charName, setCharName] = useLocalStorageState<string>('', {
+    defaultValue: '',
+  });
   const [level, setLevel] = useLocalStorageState<number>(`level-${build.id}`, {
     defaultValue: 1,
   });
@@ -61,6 +65,26 @@ const Leveler: FC = () => {
     currentSkillSetups,
     currentItemSetups
   );
+
+  useEffect(() => {
+    const levelUpHandler = ((
+      event: CustomEvent<{
+        level: number;
+        charName: string;
+      }>
+    ) => {
+      const levelUp = event.detail;
+      if (levelUp.charName === charName) {
+        setLevel(levelUp.level);
+        playLevelUp();
+      }
+    }) as EventListener;
+    window.addEventListener('level-up', levelUpHandler);
+
+    return () => {
+      window.removeEventListener('level-up', levelUpHandler);
+    };
+  }, [charName, setLevel]);
 
   const levelUp = () => {
     setLevel((prev) => Math.min(100, prev + 1));
@@ -108,6 +132,13 @@ const Leveler: FC = () => {
           />
         }
       >
+        {isElectron && (
+          <Input
+            value={charName}
+            placeholder="Character name"
+            onChange={(event) => setCharName(event.target.value)}
+          />
+        )}
         <Button variant="secondary" onClick={() => navigate('/')}>
           View all builds
         </Button>
