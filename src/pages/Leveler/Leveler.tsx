@@ -19,7 +19,6 @@ import NextUpgrades from '../../components/NextUpgrades';
 import { getItemSetups, getSkillSetups } from '../../utils/setups';
 import styles from './Leveler.module.scss';
 import LinkColors from '../../components/LinkColors';
-import { playLevelUp } from '../../utils/soundEffects';
 import Input from '../../components/Input';
 import { isElectron } from '../../utils/electron';
 
@@ -76,7 +75,6 @@ const Leveler: FC = () => {
       const levelUp = event.detail;
       if (levelUp.charName === charName) {
         setLevel(levelUp.level);
-        playLevelUp();
       }
     }) as EventListener;
     window.addEventListener('level-up', levelUpHandler);

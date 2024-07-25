@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Notification } from '../types';
+import { playLevelUp } from '../utils/soundEffects';
 
 const useNotifications = (): [
   notifications: Notification[],
@@ -35,6 +36,7 @@ const useNotifications = (): [
       ]);
 
       setNotificationDrawerOpen(true);
+      playLevelUp();
     },
     []
   );
