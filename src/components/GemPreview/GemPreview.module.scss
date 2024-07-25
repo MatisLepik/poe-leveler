@@ -1,27 +1,3 @@
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
-  margin-top: 4px;
-}
-
-.color-R {
-  background: var(--color-negative);
-}
-
-.color-G {
-  background: var(--color-positive);
-}
-
-.color-B {
-  background: var(--color-highlight);
-}
-
-.color-W {
-  background: var(--color-fg);
-}
-
 .root {
   display: flex;
   align-items: flex-start;

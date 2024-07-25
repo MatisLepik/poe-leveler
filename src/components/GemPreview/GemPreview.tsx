@@ -5,6 +5,7 @@ import { Build, Gem } from '../../types';
 import styles from './GemPreview.module.scss';
 import { getClassName } from '../../utils/classes';
 import QuestName from '../QuestName';
+import SkillDot from '../SkillDot';
 
 type SkillPreviewProps = {
   gem: Gem;
@@ -59,7 +60,7 @@ export default function GemPreview({
         { [styles.disabled]: isDisabled }
       )}
     >
-      <div className={`${styles.dot} ${styles[`color-${gem.color}`]}`} />
+      <SkillDot gem={gem} />
       <div className={styles.content}>
         <div className={styles.title}>{gem.name}</div>
         {renderAcquisition()}
