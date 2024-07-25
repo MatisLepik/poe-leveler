@@ -6,29 +6,6 @@
   display: flex;
 }
 
-.header {
-  .title {
-    font-size: inherit;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .right {
-    display: flex;
-    align-items: center;
-
-    strong {
-      font-size: 20px;
-    }
-
-    .controls {
-      display: flex;
-      gap: 8px;
-    }
-  }
-}
-
 .levelIndicator {
   margin: 0 16px;
   font-size: 24px;
