@@ -110,6 +110,11 @@
       gap: 6px;
     }
 
+    .right {
+      display: flex;
+      justify-content: flex-end;
+    }
+
     > *:nth-child(2) {
       white-space: nowrap;
     }
@@ -122,6 +127,11 @@
     > *:nth-child(3) {
       text-align: right;
     }
+  }
+
+  .controls {
+    display: flex;
+    gap: 6px;
   }
 }
 

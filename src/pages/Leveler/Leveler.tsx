@@ -20,12 +20,14 @@ import NextUpgrades from '../../components/NextUpgrades';
 import { getItemSetups, getSkillSetups } from '../../utils/setups';
 
 import styles from './Leveler.module.scss';
+import LinkColors from '../../components/LinkColors';
 
 const Leveler: FC = () => {
   const { buildId } = useParams<{ buildId: string }>();
   const [buildSaves] = useBuildSaves();
   const navigate = useNavigate();
   const [showUpgradesModal, setUpgradesModal] = useState(false);
+  const [showColorsModal, setColorsModal] = useState(false);
 
   const build = useMemo(() => {
     const buildJSON = buildSaves.find((save) => save.build.id === buildId);
@@ -76,6 +78,10 @@ const Leveler: FC = () => {
     setUpgradesModal((prev) => !prev);
   };
 
+  const toggleColorsModal = () => {
+    setColorsModal((prev) => !prev);
+  };
+
   useEventListener('keydown', (evt: KeyboardEvent) => {
     if (evt.key === 'ArrowLeft') {
       levelDown();
@@ -101,7 +107,6 @@ const Leveler: FC = () => {
             }
           />
         }
-        className={styles.header}
       >
         <Button variant="secondary" onClick={() => navigate('/')}>
           View all builds
@@ -177,12 +182,22 @@ const Leveler: FC = () => {
             </Button>
           </div>
           <div className={styles.right}>
-            <Button variant="secondary" onClick={toggleUpgradesModal}>
-              Next upgrades
-            </Button>
+            <div className={styles.controls}>
+              <Button variant="secondary" onClick={toggleColorsModal}>
+                Link colors
+              </Button>
+              <Button variant="secondary" onClick={toggleUpgradesModal}>
+                Next upgrades
+              </Button>
+            </div>
           </div>
         </ContentWrapper>
       </footer>
+      {showColorsModal && (
+        <Modal title="Link colors" dismiss={() => setColorsModal(false)}>
+          <LinkColors build={build} />
+        </Modal>
+      )}
       {showUpgradesModal && (
         <Modal title="Next upgrades" dismiss={() => setUpgradesModal(false)}>
           <NextUpgrades build={build} level={level} />
