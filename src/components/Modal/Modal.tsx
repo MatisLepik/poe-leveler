@@ -24,7 +24,6 @@ const Modal: FC<ModalProps> = ({ title, dismiss, children, ...props }) => {
           <Button
             className={styles.closeButton}
             variant="secondary"
-            size="small"
             onClick={() => dismiss()}
           >
             &times;
